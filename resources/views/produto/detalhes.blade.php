@@ -8,5 +8,7 @@
 			<li><b>Descrição do Produto: </b> {{$p->descricao}} </li>
 			<li><b>Quantidade: </b> {{$p->quantidade}} </li>
 		</ul>
+
+	<a href="{{ action('ProdutoController@Edita', $p->id) }}"><i class="fas fa-edit"></i>Editar</a>	
 @stop
 
