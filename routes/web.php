@@ -25,3 +25,10 @@ Route::get('/produtos/json', 'ProdutoController@ListaJson');
 Route::get('/produtos/remove/{id}', 'ProdutoController@Remove');
 Route::get('/produtos/edita/{id}', 'ProdutoController@Edita');
 Route::put('/produtos/atualiza/{id}', 'ProdutoController@Atualiza');
+
+
+
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
