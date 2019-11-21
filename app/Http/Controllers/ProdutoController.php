@@ -23,18 +23,15 @@ class ProdutoController extends Controller{
 		return view('produto.listagem')->with('produtos', $produtos);				
 	}
 
-	public function mostra($id)
+	public function mostra(Produto $produto)
 	{
-		$produto = Produto::find($id);
-
-		if(empty($produto))
-			return "Esse produto não existe";
 
 		return view('produto.detalhes')->with('p', $produto);
 	}
 
 	public function novo()
 	{
+
 		return view('produto.adiciona');
 	}
 
@@ -52,22 +49,21 @@ class ProdutoController extends Controller{
 		return response()->json($produtos);
 	}
 
-	public function remove($id)
+	public function remove(Produto $produto)
 	{
-		$produto = Produto::find($id);
 		$produto->delete();
 
 		return redirect()->action('ProdutoController@Lista');
 	}
 
-	public function edita($id)
+	public function edita(Produto $produto)
 	{
-		return view('produto.edita')->with('p', Produto::findOrFail($id));	
+
+		return view('produto.edita')->with('p', $produto);	
 	}
 
-	public function atualiza($id, ProdutosRequest $request)
-	{
-		$produto = Produto::find($id);
+	public function atualiza(Produto $produto, ProdutosRequest $request)
+	{	
 		$produto->update($request->all());
 
 		return redirect()->action('ProdutoController@Lista');
