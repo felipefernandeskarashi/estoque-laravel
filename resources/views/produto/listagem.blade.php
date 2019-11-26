@@ -10,6 +10,11 @@
 		<div>Você não tem nenhum produto cadastrado.</div>
 
 	@else
+	<form action="{{ action('ProdutoController@Busca') }}" method="POST">
+		@csrf
+		<input type="text" name="busca" class="form-control" placeholder="Busca..">
+	</form>
+	<br>
 	<table class="table table-bordered table-hover" style="text-align: center">
 	<tr>
       <th scope="col">Nome</th>

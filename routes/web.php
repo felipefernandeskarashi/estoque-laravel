@@ -25,6 +25,7 @@ Route::get('/produtos/json', 'ProdutoController@ListaJson');
 Route::get('/produtos/{produto}', 'ProdutoController@Remove');
 Route::get('/produtos/{produto}/edita/', 'ProdutoController@Edita');
 Route::put('/produtos/{produto}', 'ProdutoController@Atualiza');
+Route::post('/produtos/busca', 'ProdutoController@Busca');
 
 
 

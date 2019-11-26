@@ -69,6 +69,19 @@ class ProdutoController extends Controller{
 		return redirect()->action('ProdutoController@Lista');
 	}
 
+	public function busca(Request $request){
+
+		$busca = $request::input('busca');
+		
+		$produtos = Produto::where('nome', 'LIKE', '%' . $busca . '%')
+							->orWhere('valor', 'LIKE', '%' . $busca . '%')
+							->orWhere('descricao', 'LIKE', '%' . $busca . '%')
+							->orWhere('quantidade', 'LIKE', '%' . $busca . '%')
+							->paginate(10);
+
+		return view('produto.listagem')->with('produtos', $produtos);									
+	}
+
 
 
 }
